@@ -53,59 +53,9 @@
 
 ---
 
-## 🏗️ Architecture & Components
 
-### 📂 Repository Structure
+## 🔬 Dataset Overview
 
-```
-CLAMPD-1905/
-├── 📋 README.md                          # Comprehensive documentation
-├── 📊 data/
-│   ├── 🎯 features/
-│   │   ├── final_combined_features.npy   # 🔥 Main 1905D dataset (297KB)
-│   │   ├── labels.npy                    # 🏷️ Ground truth labels (163KB)
-│   │   ├── full_feature_names.npy        # 📝 Feature mappings (120KB)
-│   │   ├── api_call_features.npy         # 🔧 API sequences (7.4MB)
-│   │   ├── transformer_embeddings.npy    # 🤖 BERT embeddings (2.8MB)
-│   │   └── node_embeddings.npy           # 🕸️ Graph embeddings (10.5KB)
-│   ├── 📋 metadata/
-│   │   ├── enriched_metadata.csv         # 📊 Enhanced metadata (3.1KB)
-│   │   ├── api_statistical_features.csv  # 📈 API statistics (62.6KB)
-│   │   └── preprocessed_metadata.csv     # 🔄 Processed metadata (2.4KB)
-│   ├── 🎨 models/
-│   │   └── han_model.pt                  # 🧠 Pre-trained HAN (139KB)
-│   ├── 🕸️ graphs/
-│   │   └── dependency_graph.gpickle      # 🔗 Dependency structure (2.4KB)
-│   └── 📝 logs/
-│       ├── npm_api_calls.txt             # 📋 npm API logs (973KB)
-│       └── pypi_api_calls.txt            # 📋 PyPI API logs (103KB)
-└── ⚙️ requirements.txt                   # 📦 Dependencies
-```
-
----
-
-## 🔬 Feature Engineering Excellence
-
-### 🎯 Trimodal Architecture (1905 Dimensions)
-
-<div align="center">
-
-```mermaid
-graph TB
-    A[📦 Package Input] --> B[🔄 Multimodal Fusion]
-    B --> C[📊 Static Metadata<br/>9 dimensions]
-    B --> D[🕸️ Graph Dependencies<br/>128 dimensions]
-    B --> E[🤖 Behavioral APIs<br/>1768 dimensions]
-    C --> F[🎯 CLAMPD-1905<br/>Unified Vector]
-    D --> F
-    E --> F
-    
-    style A fill:#e1f5fe
-    style F fill:#c8e6c9
-    style B fill:#fff3e0
-```
-
-</div>
 
 #### 1️⃣ **Static Metadata Features** (9D)
 - 🏷️ **Ecosystem**: Repository source identifier (PyPI/npm)
