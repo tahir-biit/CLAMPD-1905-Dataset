@@ -10,8 +10,7 @@
 ---
 
 ## 🌟 Overview
-
-**CLAMPD-1905** represents a significant advancement in cross-language malicious package detection research. This meticulously curated dataset addresses the critical need for unified, standardized evaluation of malware detection tools across diverse software supply chain ecosystems. Built upon packages from [MalwareBench](https://github.com/MalwareBench), CLAMPD-1905 provides the first comprehensive collection of **23,764 balanced software packages** from both PyPI and npm repositories, each encoded as sophisticated **1905-dimensional feature vectors** through advanced multimodal fusion techniques.
+**CLAMPD-1905** represents the first comprehensive cross-language dataset for malicious package detection research, providing novel unified feature representations with full reproducibility across PyPI and npm ecosystems. This meticulously curated dataset addresses the critical need for unified, standardized evaluation of malware detection tools across diverse software supply chain ecosystems. Built upon packages from [MalwareBench](https://github.com/MalwareBench), CLAMPD-1905 provides the first comprehensive collection of **23,764 balanced software packages** from both PyPI and npm repositories, each encoded as sophisticated **1905-dimensional feature vectors** through advanced multimodal fusion techniques.
 
 This comprehensive dataset addresses a critical gap in software supply chain security research by providing the first large-scale, balanced collection that combines PyPI and npm packages with sophisticated feature representations. The unified approach eliminates ecosystem-specific preprocessing requirements and facilitates reproducible cross-ecosystem research, making it a valuable resource for advancing malicious package detection capabilities.
 
