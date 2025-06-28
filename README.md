@@ -11,9 +11,9 @@
 
 ## 🌟 Overview
 
-**CLAMPD-1905** represents a breakthrough in cross-language malicious package detection research. This meticulously curated dataset addresses the critical need for unified, standardized evaluation of malware detection tools across diverse software supply chain ecosystems. Built upon the foundation of [MalwareBench](https://github.com/MalwareBench), CLAMPD-1905 provides the first comprehensive collection of **23,764 balanced software packages** from both PyPI and npm repositories, each encoded as sophisticated **1905-dimensional feature vectors** through advanced multimodal fusion techniques.
+**CLAMPD-1905** represents a significant advancement in cross-language malicious package detection research. This meticulously curated dataset addresses the critical need for unified, standardized evaluation of malware detection tools across diverse software supply chain ecosystems. Built upon the foundation of [MalwareBench](https://github.com/MalwareBench), CLAMPD-1905 provides the first comprehensive collection of **23,764 balanced software packages** from both PyPI and npm repositories, each encoded as sophisticated **1905-dimensional feature vectors** through advanced multimodal fusion techniques.
 
-The prevalence of third-party components in modern software development has significantly amplified software supply chain security risks. Popular registries like npm and PyPI serve as highly targeted channels for malware distribution, necessitating robust detection mechanisms. CLAMPD-1905 addresses the fundamental challenge of cross-ecosystem threat detection by providing unified representations that capture structural, behavioral, and contextual characteristics of packages across different programming language ecosystems.
+This comprehensive dataset addresses a critical gap in software supply chain security research by providing the first large-scale, balanced collection that combines PyPI and npm packages with sophisticated feature representations. The unified approach eliminates ecosystem-specific preprocessing requirements and facilitates reproducible cross-ecosystem research, making it an valuable resource for advancing malicious package detection capabilities.
 
 ### Key Features
 
@@ -123,27 +123,7 @@ CLAMPD-1905/
 
 ### Suitable Detection Models
 
-The CLAMPD-1905 dataset's 1905-dimensional unified feature representation makes it suitable for various machine learning approaches:
-
-**Traditional Machine Learning**:
-- Random Forest, SVM, XGBoost for baseline comparisons
-- Ensemble methods for robust cross-ecosystem detection
-
-**Deep Learning Architectures**:
-- Convolutional Neural Networks (CNNs) for spatial feature pattern detection
-- Recurrent Neural Networks (LSTM/GRU) for sequential behavioral analysis
-- Transformer-based models (RoBERTa, BERT variants) for semantic understanding
-
-**Specialized Architectures**:
-- Graph Neural Networks for dependency relationship modeling
-- Attention mechanisms for adaptive feature weighting
-- Multimodal fusion networks for integrated threat detection
-- Meta-learning approaches for cross-ecosystem generalization
-
-**Advanced Techniques**:
-- Adversarial training for robustness evaluation
-- Federated learning for distributed threat detection
-- Continual learning for evolving threat adaptation
+The CLAMPD-1905 dataset provides a rich 1905-dimensional feature space that enables researchers to explore various machine learning paradigms for enhanced malicious package detection. The unified representation supports traditional approaches like Random Forest and SVM for establishing baselines, while the multimodal nature makes it particularly well-suited for deep learning architectures including CNNs, RNNs, and transformer models. The dataset's comprehensive feature engineering—combining metadata, graph embeddings, and behavioral patterns—creates opportunities for developing sophisticated detection systems that can generalize effectively across different package ecosystems and adapt to evolving threat landscapes.
 
 ## Data Quality Assurance
 
@@ -164,43 +144,24 @@ The CLAMPD-1905 dataset's 1905-dimensional unified feature representation makes 
 | [QUT-DV25](https://arxiv.org/abs/2505.13804) | PyPI only | 14.3K | ✗ | ✗ | ✗ | ✗ |
 | [Bad Snakes](https://doi.org/10.1109/ICSE48619.2023.00052) | PyPI only | 13.4K | ✗ | ✗ | ✗ | ✗ |
 
+## Comparison with Existing Datasets
+
+| Dataset | Ecosystems | Size | Multimodal | Balanced | Graph Features | Semantic API |
+|---------|------------|------|------------|----------|----------------|--------------|
+| **CLAMPD-1905** | PyPI + npm | 23.7K | ✓ | ✓ | ✓ | ✓ |
+| [MalwareBench](https://dl.acm.org/doi/10.1145/3643991.3644883) | PyPI + npm | 20.8K | ✗ | ✗ | ✗ | ✗ |
+| [PackageIntel](https://arxiv.org/abs/2409.15049) | PyPI + npm | 37.0K | ✓ | ✗ | ✓ | ✓ |
+| [PypiGuard](https://github.com/tahir-biit/PyPiGuard) | PyPI only | 6.7K | Partial | ✗ | ✗ | ✓ |
+| [QUT-DV25](https://arxiv.org/abs/2505.13804) | PyPI only | 14.3K | ✗ | ✗ | ✗ | ✗ |
+| [Bad Snakes](https://doi.org/10.1109/ICSE48619.2023.00052) | PyPI only | 13.4K | ✗ | ✗ | ✗ | ✗ |
+
 ## Citation
 
-```bibtex
-@article{iqbal2025clampd,
-  title={CLAMPD-Net: Cross-Language Malicious Package Detection for Software Supply Chain Security across PyPI and NPM Ecosystems},
-  author={Iqbal, Tahir and Wu, Guowei and Iqbal, Zahid},
-  journal={IEEE Transactions on Software Engineering},
-  year={2025},
-  note={Under Review}
-}
-```
+*Citation will be available upon publication.*
 
 ## Technical Details
 
-### Static Metadata (9 Features)
-- **Ecosystem**: Source repository identifier (PyPI/npm)
-- **Artifact ID**: Package identifier with missing value handling
-- **Threat Type**: Binary malicious/benign classification
-- **File Count**: Number of source files (Z-score normalized)
-- **Package Size**: Total file size in bytes (Z-score normalized)
-- **Size per File**: Content density indicator (derived feature)
-- **Version Complexity**: Version component count (Z-score normalized)
-- **Metadata Completeness**: Optional field completion ratio
-- **Release Recency**: Days since last update (log-transformed, Z-score normalized)
-
-### Graph-Based Dependencies (128 Features)
-- **Construction**: Directed graphs from setup.py and package.json manifests
-- **Topology**: 20,968 nodes, 67,847 edges spanning both ecosystems
-- **Node Features**: Normalized metadata-based attributes
-- **HAN Training**: Two-layer GAT with multi-head attention
-- **Optimization**: Adam optimizer, 100 epochs, learning rate 5×10⁻³
-
-### Behavioral API Representation (1768 Features)
-- **Bag-of-APIs**: 1000-dimensional frequency vectors from top API tokens
-- **Semantic Embeddings**: 768-dimensional BERT [CLS] token representations
-- **Source Processing**: AST traversal (Python) + regex patterns (JavaScript/TypeScript)
-- **Scale**: Over 1 million source files processed
+The dataset employs sophisticated feature engineering to create comprehensive package representations. Static metadata captures essential package characteristics through normalized numerical features and categorical encodings. Dependency relationships are modeled using graph neural networks trained on manifests from both ecosystems, creating 128-dimensional structural embeddings. Behavioral analysis processes over one million source files to extract API usage patterns, combining frequency-based representations with semantic embeddings from transformer models. This multimodal approach results in unified 1905-dimensional vectors that preserve both structural and behavioral information while enabling consistent analysis across different programming language ecosystems.
 
 ## Contact
 
@@ -208,7 +169,7 @@ The CLAMPD-1905 dataset's 1905-dimensional unified feature representation makes 
 📧 tahir.biit@gmail.com | tahir@mail.dlut.edu.cn  
 🏛️ Dalian University of Technology, School of Software Technology
 
-**Guowei Wu** (Corresponding Author)  
+**Guowei Wu**  
 📧 guowei@dlut.edu.cn  
 🏛️ Dalian University of Technology, School of Software Technology
 
