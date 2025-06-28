@@ -121,7 +121,7 @@ CLAMPD-1905/
 
 ### Suitable Detection Models
 
-The CLAMPD-1905 dataset provides a rich 1905-dimensional feature space that enables researchers to explore various machine learning paradigms for enhanced malicious package detection. The unified representation supports traditional approaches like Random Forest and SVM for establishing baselines, while the multimodal nature makes it particularly well-suited for deep learning architectures including CNNs, RNNs, and transformer models. The dataset's comprehensive feature engineering—combining metadata, graph embeddings, and behavioral patterns—creates opportunities for developing sophisticated detection systems that can generalize effectively across different package ecosystems and adapt to evolving threat landscapes.
+The CLAMPD-1905 dataset provides a rich 1905-dimensional feature space that enables researchers to explore various machine learning paradigms for enhanced malicious package detection. The unified representation supports traditional approaches like Random Forest and SVM for establishing baselines, while the multimodal nature makes it particularly well-suited for deep learning architectures including CNNs, RNNs, and transformer models. The dataset's comprehensive feature engineering combining metadata, graph embeddings, and behavioral patterns creates opportunities for developing sophisticated detection systems that can generalize effectively across different package ecosystems and adapt to evolving threat landscapes.
 
 ## Data Quality Assurance
 
