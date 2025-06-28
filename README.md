@@ -11,9 +11,11 @@
 
 ## 🌟 Overview
 
-**CLAMPD-1905** represents a significant advancement in cross-language malicious package detection research. This meticulously curated dataset addresses the critical need for unified, standardized evaluation of malware detection tools across diverse software supply chain ecosystems. Built upon the foundation of [MalwareBench](https://github.com/MalwareBench), CLAMPD-1905 provides the first comprehensive collection of **23,764 balanced software packages** from both PyPI and npm repositories, each encoded as sophisticated **1905-dimensional feature vectors** through advanced multimodal fusion techniques.
+**CLAMPD-1905** represents a significant advancement in cross-language malicious package detection research. This meticulously curated dataset addresses the critical need for unified, standardized evaluation of malware detection tools across diverse software supply chain ecosystems. Built upon packages from [MalwareBench](https://github.com/MalwareBench), CLAMPD-1905 provides the first comprehensive collection of **23,764 balanced software packages** from both PyPI and npm repositories, each encoded as sophisticated **1905-dimensional feature vectors** through advanced multimodal fusion techniques.
 
-This comprehensive dataset addresses a critical gap in software supply chain security research by providing the first large-scale, balanced collection that combines PyPI and npm packages with sophisticated feature representations. The unified approach eliminates ecosystem-specific preprocessing requirements and facilitates reproducible cross-ecosystem research, making it an valuable resource for advancing malicious package detection capabilities.
+This comprehensive dataset addresses a critical gap in software supply chain security research by providing the first large-scale, balanced collection that combines PyPI and npm packages with sophisticated feature representations. The unified approach eliminates ecosystem-specific preprocessing requirements and facilitates reproducible cross-ecosystem research, making it a valuable resource for advancing malicious package detection capabilities.
+
+The dataset employs sophisticated feature engineering to create comprehensive package representations through three main components: static metadata (9 dimensions) captures essential package characteristics through normalized numerical features and categorical encodings; dependency relationships (128 dimensions) are modeled using graph neural networks trained on manifests from both ecosystems; and behavioral analysis (1768 dimensions) processes over one million source files to extract API usage patterns, combining frequency-based representations with semantic embeddings from transformer models. This multimodal approach results in unified 1905-dimensional vectors that preserve both structural and behavioral information while enabling consistent analysis across different programming language ecosystems.
 
 ### Key Features
 
@@ -25,24 +27,20 @@ This comprehensive dataset addresses a critical gap in software supply chain sec
 - **Reproducible**: Complete feature engineering pipeline and pre-computed embeddings
 - **Comprehensive Representation**: Captures structural, behavioral, and contextual package characteristics
 
-## Dataset Construction and Sources
+## Dataset Construction
 
-CLAMPD-1905 is systematically constructed using packages from [MalwareBench](https://github.com/MalwareBench), a comprehensive benchmark dataset for software supply chain security research. Our enhanced dataset builds upon MalwareBench's foundation by applying advanced feature engineering and multimodal fusion techniques to create unified 1905-dimensional representations.
+CLAMPD-1905 is constructed through a comprehensive Cross-Language Unified Feature Fusion Framework that transforms packages from MalwareBench into sophisticated 1905-dimensional feature representations. Starting with 20,798 initial samples from PyPI and npm ecosystems, we apply stratified upsampling to achieve perfect class balance, resulting in 23,764 packages (11,882 benign, 11,882 malicious).
 
-**Data Source**: [MalwareBench](https://dl.acm.org/doi/10.1145/3643991.3644883) - A labeled dataset comprising 20,792 packages from npm and PyPI ecosystems, enhanced through stratified upsampling to achieve perfect class balance.
+Our construction process follows three parallel processing streams: static metadata preprocessing handles package characteristics like file counts, sizes, and ecosystem identifiers; dependency graph construction extracts relationships from setup.py and package.json manifests to create a unified graph with 20,968 nodes and 67,847 edges; and behavioral API sequence modeling processes source files using AST traversal for Python and regex patterns for JavaScript/TypeScript. The final step fuses these representations through horizontal concatenation into unified 1905-dimensional vectors.
 
 **Referenced Works**:
+- **[MalwareBench](https://dl.acm.org/doi/10.1145/3643991.3644883)**: Source of labeled packages from PyPI and npm ecosystems
 - **[Backstabber's Knife Collection](https://link.springer.com/chapter/10.1007/978-3-030-52683-2_2)**: Foundational research on open-source supply chain attacks
 - **[PyPiGuard](https://github.com/tahir-biit/PyPiGuard)**: PyPI package analysis and detection framework
 
 ### Dataset Characteristics
 
-CLAMPD-1905 includes both malicious and benign packages, each annotated with comprehensive metadata and ground truth labels:
-
-- **Malicious**: Packages designed to carry out harmful actions, posing threats to system confidentiality, integrity, or availability
-- **Benign**: Packages with no discovered malware or suspicious behavioral patterns
-
-The dataset provides extensive metadata including package identifiers, version information, ecosystem classification, file statistics, dependency relationships, and behavioral indicators for comprehensive threat analysis.
+The dataset includes both malicious and benign packages with comprehensive annotations. Malicious packages are designed to carry out harmful actions threatening system security, while benign packages show no discovered malware or suspicious patterns. Each package provides extensive metadata including identifiers, version information, ecosystem classification, file statistics, dependency relationships, and behavioral indicators.
 
 ## Dataset Composition
 
@@ -144,24 +142,9 @@ The CLAMPD-1905 dataset provides a rich 1905-dimensional feature space that enab
 | [QUT-DV25](https://arxiv.org/abs/2505.13804) | PyPI only | 14.3K | ✗ | ✗ | ✗ | ✗ |
 | [Bad Snakes](https://doi.org/10.1109/ICSE48619.2023.00052) | PyPI only | 13.4K | ✗ | ✗ | ✗ | ✗ |
 
-## Comparison with Existing Datasets
-
-| Dataset | Ecosystems | Size | Multimodal | Balanced | Graph Features | Semantic API |
-|---------|------------|------|------------|----------|----------------|--------------|
-| **CLAMPD-1905** | PyPI + npm | 23.7K | ✓ | ✓ | ✓ | ✓ |
-| [MalwareBench](https://dl.acm.org/doi/10.1145/3643991.3644883) | PyPI + npm | 20.8K | ✗ | ✗ | ✗ | ✗ |
-| [PackageIntel](https://arxiv.org/abs/2409.15049) | PyPI + npm | 37.0K | ✓ | ✗ | ✓ | ✓ |
-| [PypiGuard](https://github.com/tahir-biit/PyPiGuard) | PyPI only | 6.7K | Partial | ✗ | ✗ | ✓ |
-| [QUT-DV25](https://arxiv.org/abs/2505.13804) | PyPI only | 14.3K | ✗ | ✗ | ✗ | ✗ |
-| [Bad Snakes](https://doi.org/10.1109/ICSE48619.2023.00052) | PyPI only | 13.4K | ✗ | ✗ | ✗ | ✗ |
-
 ## Citation
 
 *Citation will be available upon publication.*
-
-## Technical Details
-
-The dataset employs sophisticated feature engineering to create comprehensive package representations. Static metadata captures essential package characteristics through normalized numerical features and categorical encodings. Dependency relationships are modeled using graph neural networks trained on manifests from both ecosystems, creating 128-dimensional structural embeddings. Behavioral analysis processes over one million source files to extract API usage patterns, combining frequency-based representations with semantic embeddings from transformer models. This multimodal approach results in unified 1905-dimensional vectors that preserve both structural and behavioral information while enabling consistent analysis across different programming language ecosystems.
 
 ## Contact
 
